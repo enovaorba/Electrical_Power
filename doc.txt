@@ -1,0 +1,282 @@
+היי
+
+נא לפעול על פי הנספח במדריך במצורף
+
+עבור שירות משיכת LP
+ 
+
+כאמור מדובר בחשבון טסט  = '123456789' accountName  
+
+במידה ויש שאלות נא לשלוח צילום מסך של הפניה ב API והודעת השגיאה
+ 
+ליוני יונסי Yonasi, Yonatan yyonasi@deloitte.co.il
+
+
+@יוני -  עזרתך מול רועי מחברת אינובה (זה חברת נופר)
+
+הוא עושה בדיקות בסביבת הטסט ל API uמשתמש ביוזר היצרנים שיצרתם  לבדיקות
+ 
+
+תודה
+
+יוסי
+
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+
+LP------------------
+.8.2 ת י קיית רישום רציף מספק ) LPS):
+.8.2.1 דו"ח רישום רציף למספק-
+דו"ח המציג את קריאות הרישום הרציף לפי מונה. ניתן לקבץ את הנתונים לפי
+מונה וכן לפי Interval Of End,Interval Of Start ולקבל תחשיב של פריודות
+ליום.
+ניתן לסנן את הנתונים באמצעות מסנני תאריכים, מספר מונה וקוד מונה.
+SR-------------------------
+.8.3 ת י קיית קריאות עצמיות חודשיות ) SRS):
+.8.3.1 דו"ח עיכוב במשיכת קריאות עצמיות חודשיות-
+דו"ח המציג את המונים בהם חל עיכוב העולה על – 3 ימים בהגעת קריאת SR.
+ניתן לסנן את הנתונים המוצגים בדו"ח לפי התאריכים השונים, מספר מונה וכן
+קוד מונה.
+
+31
+
+)פירוט על שימוש בסינונים יש לעבור ל-'פרק -2 )סעיף 2.2.3( הנחיות לשימוש
+בדו"חות ' (
+
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+
+
+
+----------------------------------------------------
+
+
+אתם יכולים להשתמש ביוזר טסט לטובת פיתוח ע"פ המדריך המצורף
+
+לצורך בדיקות הוקם חשבון = '123456789' accountName  
+
+             וכן הוקמו  4 מוני בדיקה (עם נתוני רישום פיקטיביים) ו SR לחודש 6/2023  (מונים: 800212000618,  85214067295, 85214067314 , 100413000894 )
+             , הסבר לפרטי ההתחברות  בסביבת הבדיקות בעמ. 12-15 במדריך המצורף
+
+ 
+
+כמו כן אתם יכולים להשתמש בחשבון הייצור שלכם בתאום עם סאטק תפעילו פניות לא בשעת ההפעלה שלהם
+
+ 
+
+
+ grant_type=password 
+consumer key =< נתון קבוע שנמצא בפורטל באזור האישי של המשתמש הראשי של היצרן> 
+consumer secret =< נתון קבוע שנמצא בפורטל באזור האישי של המשתמש הראשי של היצרן > 
+username=<שם המשתמש כפי שמופיע בסיילספורס וכפי שהתקבל מייל> 
+password=<סיסמת הסיילסופרס של המשתמש+ אסימון האבטחה ברצף ללא רווחים  >
+
+
+------------------------REST API-----------------------------
+Creating a REST API in Python typically involves using a web framework like Flask or Django. Here, I'll provide an example using Flask to create a simple REST API that runs a function and returns a value. You'll need to install Flask if you haven't already:
+
+```bash
+pip install Flask
+```
+
+Here's a basic example of a Flask REST API:
+
+```python
+from flask import Flask, request, jsonify
+
+app = Flask(__name__)
+
+# Define a sample function to get a value
+def get_value():
+    return "Hello, World!"
+
+# Create a route to handle GET requests and return a value
+@app.route('/get-value', methods=['GET'])
+def get_value_route():
+    value = get_value()
+    return jsonify({'value': value})
+
+if __name__ == '__main__':
+    app.run(debug=True)
+```
+
+In this example, we've created a Flask application with a single route (`/get-value`) that responds to GET requests. When a client sends a GET request to this endpoint, it calls the `get_value` function and returns the result as JSON.
+
+To run this API, save the code to a Python file (e.g., `app.py`) and run it with the following command:
+
+```bash
+python app.py
+```
+
+Your API will be accessible at `http://localhost:5000/get-value`. When you visit this URL in your browser or make a GET request using a tool like `curl`, you'll get a JSON response with the value returned by the `get_value` function.
+
+You can replace the `get_value` function with your own logic to compute and return the desired value. This is just a basic example to get you started with creating a simple REST API in Python.
+
+
+
+in CLI RUN:
+curl http://localhost:5000/get-value
+
+
+------------------------  החלף לסביבת ייצור -----------------------------
+
+The warning message you're seeing is a standard warning that Flask displays when you run it in debug mode using the built-in development server. It's a reminder that Flask's built-in development server is not suitable for production deployments due to its limited capabilities and potential security risks.
+
+In a production environment, it's recommended to use a production-ready WSGI (Web Server Gateway Interface) server such as Gunicorn, uWSGI, or mod_wsgi when deploying Flask applications. These servers are designed for production use, provide better performance, and have features for handling production-level traffic and security.
+
+Here's how you can run your Flask application using Gunicorn, for example:
+
+1. Install Gunicorn (if you haven't already) using `pip`:
+
+   ```bash
+   pip install gunicorn
+   ```
+
+2. Change your Flask app's run line to:
+
+   ```python
+   if __name__ == '__main__':
+       app.run(host='0.0.0.0', port=5000)
+   ```
+
+3. Run your Flask app using Gunicorn:
+
+   ```bash
+   gunicorn -w 4 -b 0.0.0.0:5000 app:app
+   ```
+
+   - `-w 4` specifies the number of worker processes. You can adjust this based on your server's resources.
+   - `-b 0.0.0.0:5000` binds Gunicorn to listen on all network interfaces.
+   - `app:app` refers to your Flask app instance.
+
+Now, your Flask application is being served by Gunicorn, which is more suitable for production use. You won't see the warning message about not using the development server in production because you are using a production-ready server. Make sure to configure Gunicorn and your server environment appropriately for your production needs, including setting up any necessary reverse proxies and security measures.
+
+---------------------------------------------------
+API ייצור
+
+https://iecom.my.salesforce.com
+
+client_id: 3MVG9sh10GGnD4Dt2L_VxUozN4EtszPZrcSdjr8HoWVSacnjkoLHj.slC6iNSTWPpyzQJMF43SKXn95f3zWCC
+
+client_secret: 7CE1E5212E755654ABDC82B22E42AC215AF0ECD71D4F24A774A67B3EB5DB657D
+
+username: yaelh@satec-global.com.gefenapi
+
+password: Yh@25062022cUsZwvXhmHXN7h2iG2qnc8RxS
+
+
+
+ מספרי מונים
+ 
+1. גבים - 17000061
+
+2. גשור - 6150909
+
+
+
+
+https://iecom.my.salesforce.com/services/oauth2/token?grant_type=password&client_id=3MVG9sh10GGnD4Dt2L_VxUozN4EtszPZrcSdjr8HoWVSacnjkoLHj.slC6iNSTWPpyzQJMF43SKXn95f3zWCC&client_secret=7CE1E5212E755654ABDC82B22E42AC215AF0ECD71D4F24A774A67B3EB5DB657D&username=yaelh@satec-global.com.gefenapi&password=Yh@25062022cUsZwvXhmHXN7h2iG2qnc8RxS
+
+
+RUN
+
+python3 /home/avi/scripts_python/Gefen/Get_LP.py
+
+
+
+-----------------------------
+enova_orba_2023
+אבי בוקר טוב ,
+
+נפתח עבורכם שם משתמש במערכת כספות של חברת נגה לצורך שליחת דיווחים .
+
+שם משתמש nofrn#inova
+
+סיסמה תשלח לכתובת דוא"ל :
+le3srqnJ
+
+System.Manager@milgam.co.il
+
+
+נתיב להעברת קבצים \External Users BeforeScan\
+
+כניסה למערכת : snoga.noga-iso.co.il פורט 22
+
+ 
+יש לייצר זוג מפתחות :
+
+https://phoenixnap.com/kb/generate-ssh-key-windows-10
+
+ולשלוח אלי PUBLIC KEY
+
+PRIVATE KEY להוסיף לחיבור.
+
+ 
+
+בברכה,
+
+ 
+
+לאוניד גורליקוב
+
+אבטחת מידע אפליקטיבית
+
+cid:image005.png@01D7CA7F.29E882C0
+
+Leonid.Gorelikov@noga-iso.co.il
+
+טל.: 052-3703747
+
+www.noga-iso.co.il
+
+ -------------------
+הפקודה יצירת מפתחות ssh
+ ssh-keygen -t rsa -b 2048
+ נותנים את המיקום ושם הקובץ
+ אין צורך לבחור סיסמה לדלג
+ ---------------------
+
+
+---------------------  crontab ------------------
+הצגה
+ crontab -l
+שינוי
+crontab -e
+
+ פקודת הפעלה 
+כל יום ב 12:00 בבוקר
+0 10 * * * cd /home/avi/scripts_python/Gefen && python3 main.py
+
+שמירה 
+Ctrl + O
+Save and close the crontab file. In most text editors, you can save by pressing Ctrl + X, then confirming with Y and pressing Enter.
+
+--------------- cli put file ----------------
+ssh -i /home/avi/scripts_python/Gefen/gefenssh.key nofrn#inova@snoga.noga-iso.co.il
+put /home/avi/scripts_python/Gefen/file.txt /External\ Users\ BeforeScan/testsftp.txt
+
+
+
+----------------------- מבנה קובץ לשליחה ------------------
+מודל השוק עבור מספקים וירטואליים:   (מצורפים קבצים יומי/שבועי לדוגמא)
+
+הבהרות נוספות-
+
+שם הקובץ בפורמט הבא:
+שם הקובץ  צריך ליהיות:  SUPPNAMEN_Day/Week_supplyplan_YYYYMMDD_CreateDate_CreateTime.xml
+
+לדוגמא: DRLN_Week_supplyplan_20231231_20231227_083000.xml, HOTN_Day_supplyplan_20231231_20231227_083000.xml
+
+בטאג Type בתוך הקובץ – צריך ליהיות Day ליומי או Week לשבועי (לא כל מיני הטיות שלהם)
+יש לשים את הטאגים כפי שמופיע בטבלה מטה. (5 טאגים שהם Must!)
+יש לשים לב שהAttribute, Name , הוא עם N גדולה. לדוגמא: <DataType value="0" Name="0"> או בטאגים: <ConsDomestic Name="ConsDomestic">
+אם אין למספק יצרנים בחלוקה מספיק לשלוח רק את התג GenDistGridTotal עם אפסים בלבד ואין צורך לשלוח את התגים 14,16,17.
+ 
+
+במידה וירצו לנייד יצרן בחלוקה, התג GenDistGridTotal יכיל את סך האנרגיה המוזרמת לרשת מכל היצרנים, ואילו התג GenDistGridName יכיל את האנרגיה של היצרן הספציפי על פי השם שיינתן לו ע"י נגה וחח"י (באנגלית, כמו קוד המספק שקיים היום). עבור כל יצרן בחלוקה שיניידו יהיה צורך בתג נפרד עם שם ייעודי.
+
+
+------------------------  מונים -------------------
+
+CALL run_counters ('2024-02-25 00:00:00','2024-02-26 00:00:00')
+

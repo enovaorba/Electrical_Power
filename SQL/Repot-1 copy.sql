@@ -1,0 +1,16 @@
+
+SELECT DATE_ADD(time, INTERVAL 21 DAY) AS time_predic, ROUND(activeIKWH/1000, 2) AS activeIKWH
+FROM Gefen_LP_counters_30_minutes_Consdomestic
+WHERE DAYOFWEEK(`time`) IN (2,3)
+AND `time` >= DATE_SUB(DATE_SUB(CURDATE(), INTERVAL (DAYOFWEEK(CURDATE()) + 6) % 7 DAY), INTERVAL 2 WEEK) -- Last week's data
+AND `time` < DATE_SUB(DATE_SUB(CURDATE(), INTERVAL (DAYOFWEEK(CURDATE()) + 6) % 7 DAY), INTERVAL 1 WEEK);
+
+
+SELECT DATE_ADD(time, INTERVAL 21 DAY) AS time_predic, ROUND(activeIKWH/1000, 2) AS activeIKWH
+FROM Gefen_LP_counters_30_minutes_Consgeneral
+WHERE DAYOFWEEK(`time`) IN (2,3)
+AND `time` >= DATE_SUB(DATE_SUB(CURDATE(), INTERVAL (DAYOFWEEK(CURDATE()) + 6) % 7 DAY), INTERVAL 2 WEEK) -- Last week's data
+AND `time` < DATE_SUB(DATE_SUB(CURDATE(), INTERVAL (DAYOFWEEK(CURDATE()) + 6) % 7 DAY), INTERVAL 1 WEEK);
+
+
+

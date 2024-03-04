@@ -1,0 +1,1 @@
+SELECT * FROM Gefen_LP_counters_30_minutes_Consdomestic LIMIT 50

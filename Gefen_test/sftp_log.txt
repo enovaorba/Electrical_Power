@@ -1,0 +1,11 @@
+Welcome! Please login.
+password
+Enter password for nofrn#inova
+(nofrn#inova@snoga.noga-iso.co.il) Password:le3srqnJ
+
+Connected to snoga.noga-iso.co.il.
+sftp> put /home/avi/scripts_python/Gefen/testsftp.txt "/External Users BeforeScan/testsftp.txt"
+put /home/avi/scripts_python/Gefen/testsftp.txt "/External Users BeforeScan/testsftp.txt"
+Uploading /home/avi/scripts_python/Gefen/testsftp.txt to /External Users BeforeScan/testsftp.txt
+testsftp.txt                                    0%    0     0.0KB/s   --:-- ETAtestsftp.txt                                  100%    5     0.1KB/s   00:00    
+sftp> 

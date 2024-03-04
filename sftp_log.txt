@@ -1,0 +1,12 @@
+42.49s - pydevd: Sending message related to process being replaced timed-out after 5 seconds
+Welcome! Please login.
+password
+Enter password for nofrn#inovale3srqnJ
+
+(nofrn#inova@snoga.noga-iso.co.il) Password:
+Connected to snoga.noga-iso.co.il.
+sftp> put /home/avi/scripts_python/Gefen_files/send_report_xml//NOFRN_Day_supplyplan_20240306_20240304_124911.xml "/External Users BeforeScan/NOFRN_Day_supplyplan_20240306_20240304_124911.xml"
+put /home/avi/scripts_python/Gefen_files/send_report_xml//NOFRN_Day_supply plan_20240306_20240304_124911.xml "/External Users BeforeScan/NOFRN_Day_supplypl an_20240306_20240304_124911.xml"
+Uploading /home/avi/scripts_python/Gefen_files/send_report_xml//NOFRN_Day_supplyplan_20240306_20240304_124911.xml to /External Users BeforeScan/NOFRN_Day_supplyplan_20240306_20240304_124911.xml
+NOFRN_Day_supplyplan_20240306_20240304_124911   0%    0     0.0KB/s   --:-- ETANOFRN_Day_supplyplan_20240306_20240304_124911 100% 8792   124.5KB/s   00:00    
+sftp> 
