@@ -95,8 +95,8 @@ class FancOutputFiles:
                     time_elem.text = activeIKWH
 
             # Write the XML file
-            N_xml_file_name = f"{xml_file_name}_{day.replace('-', '')}_{current_date.replace('/', '')}_{current_time.replace(':', '')}.xml"
-            xml_file = xml_file_path + "/" + N_xml_file_name
+            N_xml_file_name = f"{xml_file_name}_{day.replace('/', '')}_{current_date.replace('/', '')}_{current_time.replace(':', '')}.xml"
+            xml_file = xml_file_path + N_xml_file_name
             tree = ET.ElementTree(root)
             tree.write(xml_file, encoding='utf-8', xml_declaration=True)
 

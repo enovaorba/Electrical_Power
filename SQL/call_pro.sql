@@ -1,1 +1,9 @@
-CALL run_counters ('2023-01-01 00:00:00','2024-02-29 00:00:00')
+CALL run_counters ('2023-01-01 00:00:00','2024-03-02 00:00:00')
+
+tables:
+Gefen_LP_counters_30_minutes_Consdomestic
+Gefen_LP_counters_30_minutes_Consgeneral
+Gefen_LP_counters_daily_ConsDomestic
+Gefen_LP_counters_daily_Consgeneral
+Gefen_LP_counters_hourly_ConsDomestic
+Gefen_LP_counters_hourly_ConsGeneral
